@@ -17,7 +17,7 @@ $(document).ready(function() {
       $('#photo_image_url').val('');
       $('#photo_title').val('');
       $('#photo_user_name').val('');
-      var new_photo = '<div data-id="' + data.id + '"><h3>' + data.title + '</h3><img height="150" src=' + data.image_url + '">By ' + data.user_name + '</div>';
+      var new_photo = '<div data-id="' + data.id + '"><h3>' + data.title + '</h3><img height="150" src=' + data.image_url + '"><p>By ' + data.user_name + '</p></div>';
       $('body').append(new_photo);
     }).fail(function(data){
 
@@ -30,7 +30,7 @@ $(document).ready(function() {
     $.ajax(url, {type: 'delete'}).done(function(response) {
       var div = $('div[data-id="' + response.id + '"]');
       div.remove();
-    }).fail(function(data) {  
+    }).fail(function(data) {
     });
   });
 });

@@ -17,6 +17,8 @@
   <div data-id="<%=photo.id%>">
     <h3><%= photo.title %> <span><%= image_tag "button_close.png" %></span> </h3>
     <%= image_tag(photo.image_url, height: 150) %>
-    By <%= photo.user_name %>
+    <p>
+      By <%= photo.user_name %>
+    </p>
   </div>
 <% end %>
