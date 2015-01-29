@@ -13,6 +13,12 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    render json: @photo
+  end
+
   private
   def photo_params
     params.require(:photo).permit(:image_url, :title, :user_name)

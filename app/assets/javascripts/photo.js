@@ -17,8 +17,20 @@ $(document).ready(function() {
       $('#photo_image_url').val('');
       $('#photo_title').val('');
       $('#photo_user_name').val('');
-      var new_photo = '<h3>' + data.title + '</h3><img height="150" src=' + data.image_url + '">By ' + data.user_name;
+      var new_photo = '<div data-id="' + data.id + '"><h3>' + data.title + '</h3><img height="150" src=' + data.image_url + '">By ' + data.user_name + '</div>';
       $('body').append(new_photo);
+    }).fail(function(data){
+
+    });
+  });
+
+  $('h3').on('click', 'span', function(){
+    var id = $(this).parent().parent().data('id');
+    var url = '/photos/' + id;
+    $.ajax(url, {type: 'delete'}).done(function(response) {
+      var div = $('div[data-id="' + response.id + '"]');
+      div.remove();
+    }).fail(function(data) {  
     });
   });
 });
